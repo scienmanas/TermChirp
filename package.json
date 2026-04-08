@@ -1,0 +1,92 @@
+{
+  "name": "termchirp",
+  "publisher": "scienmanas",
+  "displayName": "TermChirp",
+  "description": "An extension that plays a sound notification when a terminal command fails (such as a build error) or completes successfully.",
+  "version": "1.0.0",
+  "icon": "images/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scienmanas/TermChirp"
+  },
+  "homepage": "https://github.com/scienmanas/TermChirp#readme",
+  "bugs": {
+    "url": "https://github.com/scienmanas/TermChirp/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "termchirp.setSuccessSound",
+        "title": "TermChirp: Set Success Sound"
+      },
+      {
+        "command": "termchirp.setErrorSound",
+        "title": "TermChirp: Set Error Sound"
+      }
+    ],
+    "configuration": {
+      "title": "TermChirp",
+      "properties": {
+        "termchirp.successSound": {
+          "type": "string",
+          "default": "hehe_boy",
+          "enum": ["gta_mission_passed", "hehe_boy", "mario_yahoo", "tada"],
+          "enumDescriptions": [
+            "GTA Mission Passed",
+            "Hehe Boy",
+            "Mario Yahoo",
+            "Ta-Da"
+          ],
+          "description": "Sound to play when a terminal command succeeds."
+        },
+        "termchirp.errorSound": {
+          "type": "string",
+          "default": "bruh",
+          "enum": ["awkward_cricket", "bruh", "haha", "windows_xp_error"],
+          "enumDescriptions": [
+            "Awkward Cricket",
+            "Bruh",
+            "Ha Ha",
+            "Windows XP Error"
+          ],
+          "description": "Sound to play when a terminal command fails."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "mocha": "^11.7.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
+  },
+  "dependencies": {
+    "play-sound": "^1.1.6"
+  },
+  "overrides": {
+    "diff": "^8.0.3",
+    "serialize-javascript": "^7.0.5"
+  }
+}
